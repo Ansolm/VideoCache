@@ -3,6 +3,12 @@ apply plugin: 'com.android.library'
 
 android {
 
+    publishing {
+
+        singleVariant('release')
+
+    }
+
     namespace 'com.ansolm.videocache'
     compileSdk = 37
 
@@ -27,4 +33,19 @@ android {
 
 dependencies {
     api dependent.slf4j
+}
+
+apply plugin: 'maven-publish'
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                groupId = 'com.github.ansolm'
+                artifactId = 'videocache'
+                version = '0.0.11'
+                from components.release
+            }
+        }
+    }
 }
