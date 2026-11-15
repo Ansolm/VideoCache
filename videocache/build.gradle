@@ -2,19 +2,26 @@ apply from: './../config.gradle'
 apply plugin: 'com.android.library'
 
 android {
-    buildToolsVersion buidConfig.buildToolsVersion
-    compileSdkVersion buidConfig.compileSdkVersion
+
+    namespace 'com.ansolm.videocache'
+    compileSdk = 37
 
     defaultConfig {
-        minSdkVersion buidConfig.minSdkVersion
-        targetSdkVersion buidConfig.targetSdkVersion
+        minSdk = 21
+        targetSdk = 37
         versionCode buidConfig.versionCode
         versionName buidConfig.versionName
+        // AGP 9 no longer emits VERSION_NAME into library BuildConfig
+        buildConfigField "String", "VERSION_NAME", "\"${buidConfig.versionName}\""
     }
 
     compileOptions {
-        sourceCompatibility 1.8
-        targetCompatibility 1.8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    buildFeatures {
+        buildConfig true
     }
 }
 

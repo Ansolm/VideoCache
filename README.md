@@ -1,7 +1,7 @@
 # VideoCache
 ![](https://img.shields.io/badge/platform-android-orange.svg)
 ![](https://img.shields.io/badge/language-java-yellow.svg)
-![](https://jitpack.io/v/com.iwdael/videocache.svg)
+![](https://jitpack.io/v/com.ansolm/videocache.svg)
 ![](https://img.shields.io/badge/build-passing-brightgreen.svg)
 ![](https://img.shields.io/badge/license-apache--2.0-green.svg)
 ![](https://img.shields.io/badge/api-19+-green.svg)
@@ -192,7 +192,7 @@ private HttpProxyCacheServer newProxy() {
 ```Java
 	dependencies {
 	  ...
-          compile 'com.iwdael:videocache:$version'
+          compile 'com.ansolm:videocache:$version'
 	}
 ```
 

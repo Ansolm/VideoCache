@@ -1,0 +1,40 @@
+package com.ansolm.videocache;
+
+import com.ansolm.videocache.file.DiskUsage;
+import com.ansolm.videocache.file.FileNameGenerator;
+import com.ansolm.videocache.headers.HeaderInjector;
+import com.ansolm.videocache.sourcestorage.Storage;
+
+import java.io.File;
+
+/**
+ * Configuration for proxy cache.
+ *
+ * @author Alexey Danilov (danikula@gmail.com).
+ */
+public class Config {
+
+    public final File cacheRoot;
+    public final FileNameGenerator fileNameGenerator;
+    public final DiskUsage diskUsage;
+    public final Storage storage;
+    public final HeaderInjector headerInjector;
+    public final SourceCreator<Source> sourceCreator;
+    public final String host;
+
+    Config(File cacheRoot, FileNameGenerator fileNameGenerator, DiskUsage diskUsage, Storage storage, HeaderInjector headerInjector, SourceCreator<Source> sourceCreator, String host) {
+        this.cacheRoot = cacheRoot;
+        this.fileNameGenerator = fileNameGenerator;
+        this.diskUsage = diskUsage;
+        this.storage = storage;
+        this.headerInjector = headerInjector;
+        this.sourceCreator = sourceCreator;
+        this.host = host;
+    }
+
+    File generateCacheFile(String url) {
+        String name = fileNameGenerator.generate(url);
+        return new File(cacheRoot, name);
+    }
+
+}
